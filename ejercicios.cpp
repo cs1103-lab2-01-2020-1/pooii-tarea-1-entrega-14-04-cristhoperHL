@@ -155,7 +155,10 @@ namespace utec{
                 t_size=size;
                 v_1 = new T[t_size];        
             }
-            //no entendi lo de constructor de operador de asignacion asi que lo hice como sobrecarga del operador = afuera de la clase 
+
+            vector<T>& operator = (const vector<T> &t){ 
+                return *this; 
+            } 
 
             ~vector(){
                 delete []v_1;
@@ -177,7 +180,7 @@ namespace utec{
                 v_2[cnt] = element;
                 t_size=t_size+1;
 
-                v_1 = new T[t_size];
+                v_1 = new T[t_size-1];
 
                 for(int i=0;i<t_size-1;i++){
                     v_1[i] = v_2[i];
@@ -186,7 +189,75 @@ namespace utec{
                 delete []v_2;
             }
 
-            
+            void pop_back(){
+                T* v_2 = new T[t_size-1];
+                int cnt=0;
+                for(int i=0;i<t_size-2;i++){
+                    v_2[i] = v_1[i];
+                    cnt++; 
+                }
+                t_size = t_size -1;
+                v_1= new T[t_size];
+                for(int i=0;i<t_size-1;i++){
+                    v_1[i] = v_2[i];
+                }
+
+                delete []v_2;
+            }
+
+            void insert(int position,T element){
+                T* v_2 = new T[t_size+1];
+                bool into=false;
+                for(int i=0;i<t_size;i++){
+                    if(position==i || into){
+                        if(position==i){
+                            v_2[i] = element;
+                            into=true;
+                        }
+                        else{
+                            v_2[i] = v_1[i-1];
+                        }
+                    }
+                    else{
+                        v_2[i] = v_1[i];
+                    }
+                }
+
+                t_size = t_size+1;
+
+                v_1 = new T[t_size];
+                for(int i=0;i<t_size-1;i++){
+                    v_1[i] = v_2[i];
+                }
+                delete []v_2;
+            }
+
+            void erase(int position){
+                T* v_2 = new T[t_size];
+                bool into=false;
+
+                for(int i=0;i<t_size-2;i++){
+                    if(position==i || into){
+                        if(position==i){
+                            into=true;
+                            v_2[i]=v_1[i+1]; 
+                        }
+                        else{
+                            v_2[i]=v_1[i+1];
+                        }
+                    }
+                    else{
+                        v_2[i]=v_1[i];
+                    }
+                }
+                t_size = t_size -1;
+
+                v_1 = new T[t_size];
+                for(int i=0;i<t_size-1;i++){
+                    v_1[i] = v_2[i];
+                }
+                delete []v_2;
+            }
 
 
             //plus
@@ -207,6 +278,25 @@ namespace utec{
             cout<<v_1.at(i)<<endl;
         }
     }
+
+    template<class T>
+    vector<T> operator +(vector<T> &v_1,vector<T> &v_2){
+        int new_size=(v_1.size() + v_2.size())-1;
+
+        vector<T> v_3(new_size-1);
+        for(int i=0;i<new_size-2;i++){
+            if(i < v_1.size()){
+                v_3.push_back(v_1.at(i));
+            }
+            else if( (i>= v_1.size())  && (i< v_2.size()) ){
+                v_3.push_back(v_2.at(i));
+            }
+        }
+
+        return v_3;
+    } 
+
+
 };
 
 };
