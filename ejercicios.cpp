@@ -31,70 +31,98 @@ public:
 
 
 //OPERACIONES 
+template<class T>
+void operator +=(T &integer_1,T& integer_2){
 
-void operator +=(Integer &integer_1,Integer& integer_2){
-
-    integer_1 = *(new Integer( integer_1.get_value() + integer_2.get_value() ));
+    integer_1 = *(new T( integer_1.get_value() + integer_2.get_value() ));
 }
 
-Integer operator -(Integer &integer_1,Integer &integer_2){
-    return *(new Integer(integer_1.get_value() - integer_2.get_value() ));
+template<class T>
+T operator -(T &integer_1,T &integer_2){
+    return *(new T(integer_1.get_value() - integer_2.get_value() ));
 }
 
-void operator -=(Integer &integer_1,Integer& integer_2){
+template<class T>
+void operator -=(T &integer_1,T& integer_2){
 
-    integer_1 = *(new Integer( integer_1.get_value() - integer_2.get_value() ));
+    integer_1 = *(new T( integer_1.get_value() - integer_2.get_value() ));
 }
 
-Integer operator *(Integer &integer_1,Integer &integer_2){
-    return *(new Integer(integer_1.get_value() * integer_2.get_value() ));
+
+template<class T>
+T operator *(T &integer_1,T &integer_2){
+    return *(new T(integer_1.get_value() * integer_2.get_value() ));
 }
 
-void operator *=(Integer &integer_1,Integer& integer_2){
+template<class T>
+void operator *=(T &integer_1,T &integer_2){
 
-    integer_1 = *(new Integer( integer_1.get_value() * integer_2.get_value() ));
+    integer_1 = *(new T( integer_1.get_value() * integer_2.get_value() ));
 }
 
-Integer operator /(Integer &integer_1,Integer &integer_2){
-    return *(new Integer(integer_1.get_value() / integer_2.get_value() ));
+template<class T>
+T operator /(T &integer_1,T &integer_2){
+    return *(new T(integer_1.get_value() / integer_2.get_value() ));
 }
 
-Integer operator ^(Integer &integer_1,Integer &integer_2){
-    return *(new Integer(  pow(integer_1.get_value(),integer_2.get_value()) ));
+template<class T>
+T operator ^(T &integer_1,T &integer_2){
+    return *(new T(  pow(integer_1.get_value(),integer_2.get_value()) ));
 }
 
-bool operator >(Integer &integer_1,Integer &integer_2){
+template<class T>
+bool operator >(T &integer_1,T &integer_2){
     if(integer_1.get_value() > integer_1.get_value() ) return true;
     else return false;
 }
 
-bool operator >=(Integer &integer_1,Integer &integer_2){
+template<class T>
+bool operator >=(T &integer_1,T &integer_2){
     if(integer_1.get_value() >= integer_1.get_value() ) return true;
     else return false;
 }
 
-bool operator <(Integer &integer_1,Integer &integer_2){
+template<class T>
+bool operator <(T &integer_1,T &integer_2){
     if(integer_1.get_value() < integer_1.get_value() ) return true;
     else return false;
 }
 
-bool operator <=(Integer &integer_1,Integer &integer_2){
+
+template<class T>
+bool operator <=(T &integer_1,T &integer_2){
     if(integer_1.get_value() <= integer_1.get_value() ) return true;
     else return false;
 }
 
-bool operator !=(Integer &integer_1,Integer &integer_2){
+template<class T>
+bool operator !=(T &integer_1,T &integer_2){
     if(integer_1.get_value() != integer_1.get_value() ) return true;
     else return false;
 }
 
-bool operator ==(Integer &integer_1,Integer &integer_2){
+
+template<class T>
+bool operator ==(T &integer_1,T &integer_2){
     if(integer_1.get_value() == integer_1.get_value() ) return true;
     else return false;
 }
 
 
+template <class T>
+class Number{
+private:
+    T value;
+public:
+    Number(T value){
+        this->value=value;
+    }
 
+    T get_value(){
+        return value;
+    }
+
+};
 
 
 
