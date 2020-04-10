@@ -1,5 +1,7 @@
 #include "ejercicios.cpp"
 
+using namespace ejercicio6;
+
 void ejercicio_5(){
     ejercicio5::Integer integer1(5);
     ejercicio5::Integer integer2(8);
@@ -29,14 +31,24 @@ void ejercicio_5(){
 }
 
 void ejercicio_6(){
-    
+    utec::vector<int> v_1;
+
+    v_1.push_back(5);
+    v_1.push_back(80);
+    v_1.push_back(34);
+    v_1.push_back(67);
+
+
+
+
+    utec::print_vector(v_1);
+     
 }
 
 int main(){
 
-    ejercicio_5();
 
-
+    ejercicio_6();
 
 
     return 0;
