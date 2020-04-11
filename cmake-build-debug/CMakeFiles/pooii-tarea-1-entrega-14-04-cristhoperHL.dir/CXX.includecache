@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/crist/Desktop/pooii-tarea-1-entrega-14-04-cristhoperHL/src/ejercicios.cpp
+iostream
+-
+cmath
+-
+
+/mnt/c/Users/crist/Desktop/pooii-tarea-1-entrega-14-04-cristhoperHL/src/main.cpp
+ejercicios.cpp
+/mnt/c/Users/crist/Desktop/pooii-tarea-1-entrega-14-04-cristhoperHL/src/ejercicios.cpp
+
